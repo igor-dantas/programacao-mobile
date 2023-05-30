@@ -1,20 +1,15 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from "react";
+import { View, Text, Image } from "react-native";
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Hello world!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#ff3',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+    //definindo variaveis
+    let nome = 'Campus XX - Castanhal';
+    let img = 'https://www.google.com.br/google.jpg';
+    // desenhando o componente
+    return (
+        <View>
+            <Text>Olá mundo!!!</Text>
+            <Text>Meu primeiro app</Text>
+            <Text style={{ color: '#ff0000', fontSize: 25, margin: 15}}>UEPA - BES</Text>
+        </View>
+    );}
