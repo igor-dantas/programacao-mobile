@@ -32,7 +32,7 @@ export default function App() {
           <Quadrado cor="blue"></Quadrado>
           <Quadrado cor="yellow">
             <Image 
-              source={require('./src/img/logo2.jpg')}
+              source={require('./src/img/uepa-logo.jpg')}
               style={{ width: 50, height: 100, backgroundColor: '#AAA'}}
               resizeMode='contain' 
             />            
