@@ -14,7 +14,7 @@ const Header = styled.View`
 const Foto = styled.View`
   background-color: ${props => props.cor};
   height: 150px;
-  width: 150px;
+  width: 50%;
   justify-content: center;
   align-items: center;
 `;
@@ -28,13 +28,16 @@ const FotoExterna = styled.View`
 `;
 
 const Pagina = styled.View`
-  flex: 1;
   justify-content: center;
   align-items: center;
-  font-weight: bold;
   background-color: #add8e6;
   width: 100%;
+  height: 100%;
     
+`;
+
+const Titulos = styled.View`
+  padding: 40px;
 `;
 
 const statusBarHeight = StatusBar.currentHeight || 0;
@@ -43,9 +46,11 @@ export default function App() {
   return (
     <SafeAreaView style={{ paddingTop: statusBarHeight }}>
       <Pagina>
-        <Text>Galeria de fotos do</Text>
-        <Text>Igor Dantas Quintanilha</Text>
-        <Text>Marvel Minimalist</Text>
+          <Titulos>
+            <Text>Galeria de fotos do</Text>
+              <Text>Igor Dantas Quintanilha</Text>
+            <Text>Marvel Minimalist</Text>
+          </Titulos>
         <Header>
           <Foto cor="blue">
             <Image 
@@ -62,6 +67,7 @@ export default function App() {
             />
           </Foto>
         </Header>
+
         <Header>
           <Foto cor="red">
             <Image 
@@ -77,8 +83,9 @@ export default function App() {
               resizeMode='contain' 
             />
           </Foto>
-        </Header>
-        <FotoExterna cor="green">
+        </Header> 
+        
+         <FotoExterna cor="green">
           <Image
             source={{uri: 'https://wallpapers.com/images/high/marvel-minimalist-4r4egucjlelf1m8t.webp'}}
             style={{ width: '100%', height: 100, backgroundColor: '#AAA'}}
