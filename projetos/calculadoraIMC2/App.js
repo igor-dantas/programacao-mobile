@@ -1,48 +1,68 @@
-import React, { useState }from 'react';
+import React, { useState } from 'react';
 import { Text, View, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
 
 export default function App() {
-  const[peso, setPeso] = useState(''); // Armazena o valor do peso
-  const[altura, setAltura] = useState(''); // Armazena o valor da altura
-  function executarCalculos() {
-    alert(peso);
-  }
+  const [peso, setPeso] = useState(''); // Armazena o valor do peso
+  const [altura, setAltura] = useState(''); // Armazena o valor da altura
+
   function executarCalculos() {
     const alt = altura / 100;
     const imc = peso / (alt * alt);
+    let pesoIdeal, pesoIdealAjustado;
+
     if (imc < 18.6) {
       alert('Você está abaixo do peso! - IMC = ' + imc.toFixed(2));
+    } else if (imc >= 18.6 && imc < 24.9) {
+      alert('Você está com o Peso ideal! - IMC = ' + imc.toFixed(2));
+    } else if (imc >= 24.9 && imc < 34.9) {
+      alert('Você está levemente acima do peso! - IMC = ' + imc.toFixed(2));
+    } else if (imc >= 34.9) {
+      alert('Você está acima do peso! - IMC = ' + imc.toFixed(2));
     }
-    else if (imc >= 18.6 && imc < 24.9) {
-      alert('você está com o Peso ideal! - IMC = ' + imc.toFixed(2));
-    } 
-    else if (imc >= 24.9 && imc < 34.9) {
-      alert('você está acima levemente acima do peso! - IMC = ' + imc.toFixed(2));
+
+    // Cálculo do Peso Ideal
+    if (altura >= 152.4) {
+      if (altura >= 152.4 && altura <= 165.1) {
+        pesoIdeal = 52 + (0.67 * (altura - 152.4));
+      } else {
+        pesoIdeal = 52 + (0.75 * (altura - 152.4));
+      }
+    } else {
+      pesoIdeal = 0; // Altura inválida
     }
-    else if (imc >= 34.9) {
-      alert('você está acima do peso!  - IMC = ' + imc.toFixed(2));
+
+    // Cálculo do Peso Ideal Ajustado
+    if (imc < 18.6 || imc > 34.9) {
+      if (pesoIdeal !== 0) {
+        pesoIdealAjustado = ((peso - pesoIdeal) * 0.25) + pesoIdeal;
+        alert('Seu Peso Ideal Ajustado é: ' + pesoIdealAjustado.toFixed(2));
+      } else {
+        alert('Altura inválida. Não foi possível calcular o Peso Ideal Ajustado.');
+      }
     }
+
     setPeso('');
     setAltura('');
   }
+
   return (
     <View style={style.container}>
       <Text style={style.title}>Calcule seu IMC</Text>
-      <TextInput 
-        placeholder="Peso (Kg)" 
-        keyboardType="numeric" 
+      <TextInput
+        placeholder="Peso (Kg)"
+        keyboardType="numeric"
         style={style.input}
         value={peso} // valor dentro do componente
         onChangeText={setPeso} // toda vez que o campo mudar ele é salvo
       />
-      <TextInput 
-        placeholder="Altura (cm)" 
-        keyboardType="numeric" 
+      <TextInput
+        placeholder="Altura (cm)"
+        keyboardType="numeric"
         style={style.input}
         value={altura} // valor dentro do componente
         onChangeText={setAltura} // toda vez que o campo mudar ele é salvo
       />
-      <TouchableOpacity style={style.button} onPress={executarCalculos}> 
+      <TouchableOpacity style={style.button} onPress={executarCalculos}>
         <Text style={style.textoButton}>Calcular</Text>
       </TouchableOpacity>
     </View>
