@@ -40,7 +40,7 @@ const Titulos = styled.View`
   padding: 40px;
 `;
 
-const statusBarHeight = StatusBar.currentHeight || 0;
+StatusBar
 
 export default function App() {
   return (

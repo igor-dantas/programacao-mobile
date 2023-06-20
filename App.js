@@ -53,11 +53,11 @@ export default function App() {
         style={style.button}
         onPress={calculaPesoIdealAjustado} 
       >
-        <Text style={style.textbutton}>Calcular</Text>
+        <Text style={style.textoButton}>Calcular</Text>
       </TouchableOpacity>
 
-      <Text style={style.result}>Peso ideal: {pesoIdeal} Kg</Text>
-      <Text style={style.result}>Peso ideal Ajustado: {pesoIdealAjustado} Kg</Text>
+      <Text style={style.resultado}>Peso ideal: {pesoIdeal} Kg</Text>
+      <Text style={style.resultado}>Peso ideal Ajustado: {pesoIdealAjustado} Kg</Text>
 
     </View>
   );
@@ -69,7 +69,7 @@ const style = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     padding: 20,
-    paddingTop: 200,
+    paddingTop: 250,
   },
   title: {
     textAlign: 'center',
@@ -92,12 +92,12 @@ const style = StyleSheet.create({
     margin: 15,
     padding: 10,
   },
-  textbutton: {
+  textoButton: {
     color: '#FFF',
     fontSize: 25,
     textAlign: 'center',
   },
-  result: {
+  resultado: {
     textAlign: 'center',
     marginTop: 15,
     fontSize: 30,
